@@ -1,59 +1,59 @@
 //Задача 1: За допомогою prompt запитати як звуть користувача. За допомогою alert вивести "Hello, John! How are you?", де John це те, що ввів користувач. Врахувати, що користувач може натиснути cancel або нічого не ввести
 
-// const usersName = prompt("What is your name?", "");
+const usersName = prompt("What is your name?", "");
 
-// if (usersName) {
-//   alert(`Hello, ${usersName}! How are you?`);
-// } else {
-//   alert("By By");
-// }
+if (usersName) {
+  alert(`Hello, ${usersName}! How are you?`);
+} else {
+  alert("By By");
+}
 
 //Задача 2 : Створити скрипт для складання, віднімання, множення та поділу двох чисел та виведення результатів. Числа вводить користувач, врахувати, що він може ввести невалідні дані
 
-// const enterValueOne = +prompt("Enter first Number ", "");
+const enterValueOne = +prompt("Enter first Number ", "");
 
-// const enterOperation = prompt("Enter operation ", "");
+const enterOperation = prompt("Enter operation ", "");
 
-// const enterValueTwo = +prompt("Enter second Number ", "");
+const enterValueTwo = +prompt("Enter second Number ", "");
 
-// if (
-//   isNaN(enterValueOne || enterOperation || enterValueTwo) ||
-//   enterOperation == "" ||
-//   enterValueTwo == ""
-// ) {
-//   alert("You have wrote something wrong my friend");
-// }
+if (
+  isNaN(enterValueOne || enterOperation || enterValueTwo) ||
+  enterOperation == "" ||
+  enterValueTwo == ""
+) {
+  alert("You have wrote something wrong my friend");
+}
 
-// const sum = enterValueOne + enterValueTwo;
+const sum = enterValueOne + enterValueTwo;
 
-// const multiplication = enterValueOne * enterValueTwo;
+const multiplication = enterValueOne * enterValueTwo;
 
-// const difference = enterValueOne - enterValueTwo;
+const difference = enterValueOne - enterValueTwo;
 
-// const division = enterValueOne / enterValueTwo;
+const division = enterValueOne / enterValueTwo;
 
-// switch (enterOperation) {
-//   case "+":
-//     alert(`Result ${sum}`);
-//     break;
-//   case "-":
-//     alert(`Result ${difference}`);
-//     break;
+switch (enterOperation) {
+  case "+":
+    alert(`Result ${sum}`);
+    break;
+  case "-":
+    alert(`Result ${difference}`);
+    break;
 
-//   case "*":
-//     alert(`Result ${multiplication}`);
-//     break;
-//   case "/":
-//     alert(`Result ${division}`);
-// }
+  case "*":
+    alert(`Result ${multiplication}`);
+    break;
+  case "/":
+    alert(`Result ${division}`);
+}
 
 // //Задача 3 Створити скрипт, який отримує від користувача (prompt) два значення і виводить (alert) true, якщо значення рівні, false - якщо ні
 
-// const firstValue = prompt("Enter first Value", "");
+const firstValue = prompt("Enter first Value", "");
 
-// const secondValue = prompt("Enter second Value", "");
+const secondValue = prompt("Enter second Value", "");
 
-// alert(firstValue === secondValue);
+alert(firstValue === secondValue);
 
 // //Задача 4 Розкласти по цифрах п'ятизначне число і вивести у виcхідному порядку через пробіл (використовувати оператор “розподіл по модулю” %)
 
