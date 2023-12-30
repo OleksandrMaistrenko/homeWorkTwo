@@ -2,52 +2,56 @@
 
 const usersName = prompt("What is your name?", "");
 
-if (usersName) {
-  alert(`Hello, ${usersName}! How are you?`);
+if (isNaN(usersName) && usersName.trim() !== "") {
+  alert(`Hello, ${usersName.trim()}! How are you?`);
 } else {
-  alert("By By");
+  alert(`It's not a valid name, please try again.`);
 }
 
 //Задача 2 : Створити скрипт для складання, віднімання, множення та поділу двох чисел та виведення результатів. Числа вводить користувач, врахувати, що він може ввести невалідні дані
 
-const enterValueOne = +prompt("Enter first Number ", "");
-
-const enterOperation = prompt("Enter operation ", "");
-
-const enterValueTwo = +prompt("Enter second Number ", "");
+const enterValueOne = +prompt("Enter first number", "");
+const enterOperation = prompt("Enter operation (+, -, *, /)", "");
+const enterValueTwo = +prompt("Enter second number", "");
 
 if (
-  isNaN(enterValueOne || enterOperation || enterValueTwo) ||
-  enterOperation == "" ||
-  enterValueTwo == ""
+  isNaN(enterValueOne) ||
+  isNaN(enterValueTwo) ||
+  !["+", "-", "*", "/"].includes(enterOperation)
 ) {
-  alert("You have wrote something wrong my friend");
+  alert("Invalid input. Please enter valid numbers and operation.");
+} else {
+  let result;
+
+  switch (enterOperation) {
+    case "+":
+      result = enterValueOne + enterValueTwo;
+      break;
+    case "-":
+      result = enterValueOne - enterValueTwo;
+      break;
+    case "*":
+      result = enterValueOne * enterValueTwo;
+      break;
+    case "/":
+      if (enterValueTwo !== 0) {
+        result = enterValueOne / enterValueTwo;
+      } else {
+        alert("Division by zero is not allowed.");
+        break;
+      }
+      break;
+    default:
+      alert("Invalid operation.");
+      break;
+  }
+
+  if (result !== undefined) {
+    alert(`Result: ${result}`);
+  }
 }
 
-const sum = enterValueOne + enterValueTwo;
-
-const multiplication = enterValueOne * enterValueTwo;
-
-const difference = enterValueOne - enterValueTwo;
-
-const division = enterValueOne / enterValueTwo;
-
-switch (enterOperation) {
-  case "+":
-    alert(`Result ${sum}`);
-    break;
-  case "-":
-    alert(`Result ${difference}`);
-    break;
-
-  case "*":
-    alert(`Result ${multiplication}`);
-    break;
-  case "/":
-    alert(`Result ${division}`);
-}
-
-// //Задача 3 Створити скрипт, який отримує від користувача (prompt) два значення і виводить (alert) true, якщо значення рівні, false - якщо ні
+// // //Задача 3 Створити скрипт, який отримує від користувача (prompt) два значення і виводить (alert) true, якщо значення рівні, false - якщо ні
 
 const firstValue = prompt("Enter first Value", "");
 
@@ -55,29 +59,34 @@ const secondValue = prompt("Enter second Value", "");
 
 alert(firstValue === secondValue);
 
-// //Задача 4 Розкласти по цифрах п'ятизначне число і вивести у виcхідному порядку через пробіл (використовувати оператор “розподіл по модулю” %)
+// // //Задача 4 Розкласти по цифрах п'ятизначне число і вивести у виcхідному порядку через пробіл (використовувати оператор “розподіл по модулю” %)
 
-let enterNumber = +prompt("Enter five numbers"); // 12345
+// у 4 зробить, щоб для цілих 5значних (і додатніх, і від'ємних) рахувало і виводило результат, а для нечисел, порожнього значення, нецілих чисел виводило помилку
+
+let enterNumber = prompt("Enter a five-digit number");
 
 const array = [];
 
 if (
-  (isNaN(enterNumber) && -100000 < enterNumber && enterNumber < -9999) ||
-  (9999 < enterNumber && enterNumber < 100000)
+  enterNumber !== null &&
+  enterNumber.trim() !== "" &&
+  !isNaN(enterNumber) &&
+  Number.isInteger(+enterNumber) &&
+  enterNumber >= -99999 &&
+  enterNumber <= 99999
 ) {
-  while (enterNumber > 0) {
-    let lastNumber = enterNumber % 10;
+  const isNegative = +enterNumber < 0;
+  enterNumber = Math.abs(+enterNumber);
 
-    array.push(lastNumber); //[5]
+  while (enterNumber !== 0) {
+    const lastNumber = enterNumber % 10;
 
-    enterNumber = Math.floor(enterNumber / 10); //1234
+    array.unshift(lastNumber);
 
-    array.sort((a, b) => a - b);
+    enterNumber = Math.floor(enterNumber / 10);
   }
 
-  alert(enterNumber < 0 ? array.join("-") : array.join(" "));
+  alert((isNegative ? "-" : "") + array.join(" "));
 } else {
-  alert("This value is invalid");
+  alert("This value is invalid. Please enter a non-empty five-digit integer.");
 }
-
-// у 4 зробить, щоб для цілих 5значних (і додатніх, і від'ємних) рахувало і виводило результат, а для нечисел, порожнього значення, нецілих чисел виводило помилку
